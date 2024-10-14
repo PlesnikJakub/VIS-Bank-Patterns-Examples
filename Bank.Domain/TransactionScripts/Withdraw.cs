@@ -1,0 +1,10 @@
+﻿namespace Bank.Domain.TransactionScripts;
+public class Withdraw : ITransactionScript<bool>
+{
+    public bool Output => throw new NotImplementedException();
+
+    public void Execute()
+    {
+        throw new NotImplementedException();
+    }
+}
