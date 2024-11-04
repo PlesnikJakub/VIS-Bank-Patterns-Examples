@@ -1,4 +1,8 @@
-﻿namespace Bank.Domain.DomainModel;
+﻿using System.Data.SqlClient;
+using System.Data;
+using Bank.Data.TDGW;
+
+namespace Bank.Domain.DomainModel;
 
 public class AccountAR
 {
@@ -13,6 +17,8 @@ public class AccountAR
         return account;
     }
 
+
+    // Logic
     public void Deposit(double deposit)
     {
         Ammount += deposit;
@@ -25,10 +31,23 @@ public class AccountAR
         Save();
     }
 
+    // DATA Access
     public static AccountAR Find(int id)
     {
-        // TODO
-        return new AccountAR();
+        // **** Get Account ****
+        var gateway = new AccountTGW();
+        var result = gateway.GetAccount(id.ToString());
+        return Map(result);
+    }
+
+    private static AccountAR Map(DataTable result)
+    {
+        return new AccountAR()
+        {
+            Id = result.Rows[0]["account_id"].ToString(),
+            HolderName = result.Rows[0]["holder_name"].ToString(),
+            Ammount = double.Parse(result.Rows[0]["ammount"].ToString())
+        };
     }
 
     public void Save()

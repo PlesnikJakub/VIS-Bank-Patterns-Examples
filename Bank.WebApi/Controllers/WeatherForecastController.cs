@@ -33,8 +33,5 @@ namespace Bank.WebApi.Controllers
             .ToArray();
         }
 
-        public WeatherForecast  Get(int id)
-        {
-        }
     }
 }
