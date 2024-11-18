@@ -6,7 +6,7 @@ namespace Bank.Domain.TableModule;
 
 public class AccountTableModule
 {
-    private readonly AccountTGW _accountTDGW = new();
+    private readonly IAccountGateway _accountTDGW = new AccountTGW();
 
     public AccountDTO NewAccount(string holderName, double ammount)
     {

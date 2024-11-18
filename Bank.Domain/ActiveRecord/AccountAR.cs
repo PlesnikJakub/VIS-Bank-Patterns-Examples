@@ -17,6 +17,10 @@ public class AccountAR
         return account;
     }
 
+    private static IAccountGateway CreateGatewazy()
+    {
+        return new StubAccountTGW();
+    }
 
     // Logic
     public void Deposit(double deposit)
@@ -35,7 +39,7 @@ public class AccountAR
     public static AccountAR Find(int id)
     {
         // **** Get Account ****
-        var gateway = new AccountTGW();
+        var gateway = CreateGatewazy();
         var result = gateway.GetAccount(id.ToString());
         return Map(result);
     }

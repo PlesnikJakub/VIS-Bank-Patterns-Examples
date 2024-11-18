@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Bank.Data.TDGW;
 
-public class UserTableDataGateway
+public class UserTableDataGateway : IUserGateway
 {
     public UserDTO GetUser(string email)
     {
